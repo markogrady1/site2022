@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-// import Footer from './Footer';
-// import Header from './Header';
-import Projects from './Projects';
+import Projects from './components/Projects';
 import { Routes, Route } from 'react-router-dom';
-// import Detail from './DetailRefs';
-// import Cart from './Cart';
-import Home from './Home';
-import GitHubRepos from './GitHubRepos';
-import Reactions from './Reactions';
+import Home from './components/Home';
+import GitHubRepos from './components/GitHubRepos';
+import Reactions from './components/Reactions';
 
 export default function App() {
   const routes = [

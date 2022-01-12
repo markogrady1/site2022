@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useFetch from './services/useFetch';
+import useFetch from '../services/useFetch';
 
 import Panel from './Panel';
 import Spinner from './Spinner';
@@ -13,7 +13,6 @@ function Home() {
 
   if (error) return <PageNotFound />;
 
-  console.log('printing from render');
   return (
     <div>
       <div className='title'>Welcome to my experience!</div>

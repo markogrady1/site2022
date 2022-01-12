@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Header.css';
+import './includes.css';
 
 const activeStyle = {
   color: '#000',
@@ -60,7 +60,7 @@ export default function Header() {
                 activeStyle={activeStyle}
                 to='/github'
               >
-                GitHubRepos{' '}
+                GitHub Repos{' '}
               </NavLink>
             </li>
           </ul>

@@ -24,7 +24,7 @@ function Home() {
       <div className='flex-container-thin'>
         {projects.map((item) => {
           return (
-            <Panel key={item.id} fullname={item.fullname} name={item.name} />
+            <Panel key={item.id} niceName={item.niceName} name={item.name} />
           );
         })}
       </div>

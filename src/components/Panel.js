@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Panel = (props) => {
   return (
     <div>
-      <div className='panel-name'>{props.fullname}</div>
+      <div className='panel-name'>{props.niceName}</div>
       <div className='panel-desc'>{props.content}</div>
       {props.content && (
         <Link to={props.name} className='btn btn-primary'>

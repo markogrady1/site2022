@@ -3,13 +3,13 @@
     {
       "id": 1,
       "name": "word-game",
-      "fullname": "Word Game",
+      "niceName": "Word Game",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
     },
     {
       "id": 2,
       "name": "visual-algorithms",
-      "fullname": "Visual Algorithms",
+      "niceName": "Visual Algorithms",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
     }
   ],

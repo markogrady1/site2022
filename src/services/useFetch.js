@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
-
-export default function useFetch(url) {
+export default function useFetch(url, base = null) {
   const isMounted = useRef(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -12,6 +10,8 @@ export default function useFetch(url) {
     isMounted.current = true;
     async function init() {
       try {
+        let baseUrl = base ?? process.env.REACT_APP_API_BASE_URL;
+
         const response = await fetch(baseUrl + url);
         if (response.ok) {
           const json = await response.json();

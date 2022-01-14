@@ -175,3 +175,31 @@ fieldset[disabled] .bttn {
   margin: 20px;
   font-size: 25px;
 }
+.github-anchor {
+  text-decoration: none;
+}
+.github-container {
+  transition: all 0.3s ease;
+
+  background-color: #fff;
+  border-color: #b9babb;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  color: #52565c;
+  width: 50%;
+  margin: 10px auto;
+  /* height: 70px; */
+  padding: 10px 10px 10px 50px;
+  /* text-align: center; */
+}
+.github-container:hover {
+  border-color: #a0a0a0;
+  color: #000;
+}
+.github-name {
+  /* text-align: center; */
+  color: #52565c;
+  font-weight: 600;
+  font-size: 16px;
+}

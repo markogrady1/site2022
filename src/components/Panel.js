@@ -7,7 +7,7 @@ const Panel = (props) => {
       <div className='panel-name'>{props.niceName}</div>
       <div className='panel-desc'>{props.content}</div>
       {props.content && (
-        <Link to={props.name} className='btn btn-primary'>
+        <Link to={props.name} className='bttn bttn-grey'>
           Check it out
         </Link>
       )}

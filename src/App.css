@@ -23,13 +23,13 @@ main {
   margin: 0 auto;
 }
 
-.btn-primary {
+.bttn-grey {
   color: #474646;
   background-color: #ecedec;
   font-size: 0.9rem;
 }
 
-.btn {
+.bttn {
   display: inline-block;
   margin-bottom: 0;
   font-weight: 400;
@@ -52,14 +52,14 @@ main {
   user-select: none;
 }
 
-.btn:hover {
+.bttn:hover {
   /* background-color: red; */
   border: 1px solid #1c72e7;
 }
 
-.btn.disabled,
-.btn[disabled],
-fieldset[disabled] .btn {
+.bttn.disabled,
+.bttn[disabled],
+fieldset[disabled] .bttn {
   cursor: not-allowed;
   opacity: 0.65;
   filter: alpha(opacity=65);

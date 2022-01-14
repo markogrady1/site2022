@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import useFetch from '../services/useFetch';
-import Panel from './Panel';
 
 import Spinner from './Spinner';
 import PageNotFound from './PageNotFound';
@@ -46,7 +44,7 @@ function GitHubRepos() {
       <div className='title'>GitHub Repositories</div>
       <div className=''>
         {filteredProjects.map((item) => (
-          <a key={item.id} to={item.html_url}>
+          <a key={item.id} href={item.html_url}>
             <p>{item.name}</p>
           </a>
         ))}

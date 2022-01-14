@@ -30,7 +30,7 @@ export default function useFetch(url, base = null) {
     return () => {
       isMounted.current = false;
     };
-  }, [url]);
+  }, [url, base]);
 
   return { data, error, loading };
 }

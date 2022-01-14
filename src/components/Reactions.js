@@ -1,15 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useFetch from '../services/useFetch';
+import Panel from './Panel';
 import Spinner from './Spinner';
+import PageNotFound from './PageNotFound';
+import { arrayToMatrix } from '../utils';
 
 function Reactions() {
-  const [loading, setLoading] = useState(true);
+  const { data: projects, loading, error } = useFetch('projects');
 
-  if (!loading) return <Spinner />;
+  if (loading) return <Spinner />;
+
+  if (error) return <PageNotFound />;
+
+  const panelRow = (val) => {
+    return (
+      <Panel
+        key={val.id}
+        name={val.name}
+        niceName={val.niceName}
+        content={val.content}
+      />
+    );
+  };
+
+  const sortedProjects = arrayToMatrix(projects, 3);
 
   return (
-    <>
-      <h1>REACTIONS</h1>
-    </>
+    <div>
+      <div className='title'>My React Projects</div>
+      {sortedProjects.map((item, index) => {
+        return (
+          <div key={index} className='flex-container'>
+            {item.map((projObj) => {
+              return panelRow(projObj);
+            })}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

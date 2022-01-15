@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import GitHubRepos from './components/GitHubRepos';
 import Reactions from './components/Reactions';
+import Wordigo from './components/Reactions/Wordigo';
 
 export default function App() {
   const routes = [
@@ -23,6 +24,10 @@ export default function App() {
     {
       path: '/reactions',
       element: Reactions,
+    },
+    {
+      path: '/reactions/wordigo',
+      element: Wordigo,
     },
   ];
   return (

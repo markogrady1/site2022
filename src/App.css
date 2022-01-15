@@ -97,7 +97,7 @@ fieldset[disabled] .bttn {
     transform: rotate(360deg);
   }
 }
-
+.flex-container-small,
 .flex-container,
 .flex-container-thin,
 .flex-container-medium {
@@ -121,6 +121,23 @@ fieldset[disabled] .bttn {
   text-align: center;
 
   flex-grow: 1;
+}
+
+.flex-container-small > div {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #6d6e6e;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #243238;
+  cursor: pointer;
+  display: flex;
+  flex-basis: calc(20% - 10px);
+  height: 80px;
+  width: 30px;
+  justify-content: center;
+  margin: 10px 10px;
+  padding: 0 10px;
 }
 
 .flex-container-thin > div {
@@ -202,4 +219,9 @@ fieldset[disabled] .bttn {
   color: #52565c;
   font-weight: 600;
   font-size: 16px;
+}
+
+.flex-container-small > div.letter {
+  font-size: 40px;
+  color: #708090;
 }

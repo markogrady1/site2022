@@ -8,71 +8,35 @@
   box-sizing: border-box;
 }
 
-body {
-  color: var(--color-main);
+.wordigo-container {
+  width: 350px;
+  margin: 20px auto 20px auto;
 }
 
-.game {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.body {
+.wordigo-flex-container {
   display: flex;
+  flex-wrap: nowrap;
+  margin: auto 0px;
+  width: 100%;
 }
 
-.help {
-  color: #666;
-  margin: 10px;
+.wordigo-flex-container > div.letter {
+  background-color: #fff;
+  border: 1px solid #dde3e6;
+  width: 1px;
+  height: 64px;
+  margin: 3px;
+  padding-top: 20px;
+  color: #52565c;
   text-align: center;
+
+  flex-grow: 1;
 }
 
-.left {
-  text-align: center;
-  width: 50%;
-  border: thin solid #ddd;
+.wordigo-flex-container > div.letter {
+  color: #708090;
 }
 
-.right {
-  text-align: center;
-  padding: 10px;
-  width: 50%;
-  border: thin solid #ddd;
-}
-
-.star {
-  display: inline-block;
-  margin: 0 15px;
-}
-
-.star:after {
-  content: '\2605';
-  font-size: 45px;
-}
-
-.number {
-  background-color: #eee;
-  border: thin solid #ddd;
-  width: 45px;
-  height: 45px;
-  margin: 10px;
-  font-size: 25px;
-}
-
-.number:focus,
-.number:active {
-  outline: none;
-  border: thin solid #ddd;
-}
-
-.timer {
-  color: #666;
-  margin-top: 3px;
-  margin-left: 3px;
-}
-
-.game-done .message {
-  font-size: 250%;
-  font-weight: bold;
-  margin: 15px;
+.letter {
+  width: 100px;
 }

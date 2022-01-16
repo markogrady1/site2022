@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Letter = (props) => <div className='letter'>{props.letter}</div>;
+// word of the day is HARRY
+
+const Letter = (props) => {
+  return (
+    <div
+      onClick={() => props.clickAction(props.letter)}
+      className={'letter row-' + props.row + ' col-' + props.col}
+    >
+      {props.letter}
+    </div>
+  );
+};
 
 export default Letter;

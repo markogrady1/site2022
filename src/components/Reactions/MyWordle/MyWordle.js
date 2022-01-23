@@ -28,16 +28,6 @@ function MyWordle() {
   });
 
   useEffect(() => {
-    // return function foo() {
-    //   if (words) {
-    //     setSolution(() => {
-    //       const currentwor =
-    //         words[Math.floor(Math.random() * words.length)] || '';
-    //     });
-    //   }
-    // };
-
-    // const { data: words1, loading, error } = useFetch('words');
     localStorage.setItem('guesses', JSON.stringify(guesses));
   }, [guesses]);
 

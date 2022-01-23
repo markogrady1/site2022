@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import GitHubRepos from './components/GitHubRepos';
 import Reactions from './components/Reactions';
-import Wordigo from './components/Reactions/Wordigo';
+import MyWordle from './components/Reactions/MyWordle/MyWordle';
 
 export default function App() {
   const routes = [
@@ -26,8 +26,8 @@ export default function App() {
       element: Reactions,
     },
     {
-      path: '/reactions/wordigo',
-      element: Wordigo,
+      path: '/reactions/react-wordle',
+      element: MyWordle,
     },
   ];
   return (

@@ -224,4 +224,7 @@ fieldset[disabled] .bttn {
 .flex-container-small > div.letter {
   font-size: 40px;
   color: #708090;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
 }

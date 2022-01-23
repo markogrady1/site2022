@@ -51,4 +51,12 @@ const randomSumIn = (arr, max) => {
   return sums[random(0, sums.length - 1)];
 };
 
-export { arrayToMatrix, randomise, fullAlphabetArray, sum, range, random };
+export {
+  randomSumIn,
+  arrayToMatrix,
+  randomise,
+  fullAlphabetArray,
+  sum,
+  range,
+  random,
+};

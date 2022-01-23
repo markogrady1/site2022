@@ -63,6 +63,7 @@ function GitHubRepos() {
                     href={`https://www.npmjs.com/package/${item.name}`}
                   >
                     <img
+                      alt='npm shield'
                       src={`https://img.shields.io/npm/v/${item.name}.svg`}
                     ></img>
                   </a>

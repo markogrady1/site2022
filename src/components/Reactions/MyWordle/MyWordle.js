@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Grid from './Grid';
 import PlayAgain from './PlayAgain';
-
 import './MyWordle.css';
 import Keyboard from './Keyboard';
+import words from '../../../words';
 
 function MyWordle() {
   const [currentGuess, setCurrentGuess] = useState('');
-  // tempory solution state
-  const [solution, setSolution] = useState('HARRY');
   const [isGameOver, setIsGameOver] = useState(false);
   const [outcome, setOutcome] = useState('');
   const [gameId, setGameId] = useState(0);
+  const [isAWord, setIsAWord] = useState(true);
+  const [solution, setSolution] = useState(() => {
+    const currentwor = words[Math.floor(Math.random() * words.length)] || '';
+    return currentwor.toUpperCase();
+  });
 
   const [guesses, setGuesses] = useState(() => {
     try {
@@ -25,6 +28,16 @@ function MyWordle() {
   });
 
   useEffect(() => {
+    // return function foo() {
+    //   if (words) {
+    //     setSolution(() => {
+    //       const currentwor =
+    //         words[Math.floor(Math.random() * words.length)] || '';
+    //     });
+    //   }
+    // };
+
+    // const { data: words1, loading, error } = useFetch('words');
     localStorage.setItem('guesses', JSON.stringify(guesses));
   }, [guesses]);
 
@@ -49,9 +62,19 @@ function MyWordle() {
     setIsGameOver(false);
     setGuesses([]);
     setCurrentGuess('');
+    setSolution(() => {
+      const currentwor = words[Math.floor(Math.random() * words.length)] || '';
+      return currentwor.toUpperCase();
+    });
   };
 
   const onEnter = () => {
+    const isWord = words.find((item) => item.toUpperCase() === currentGuess);
+
+    if (!isWord && currentGuess.length === 5 && guesses.length < 6) {
+      setIsAWord(false);
+      return;
+    }
     const res = currentGuess === solution;
     if (res) {
       setIsGameOver(true);
@@ -70,26 +93,16 @@ function MyWordle() {
   };
   const onDelete = () => {
     setCurrentGuess(currentGuess.slice(0, -1));
+    if (currentGuess.length < 6) {
+      setIsAWord(true);
+    }
   };
 
-  useEffect(() => {
-    const listener = (e) => {
-      if (e.code === 'Enter') {
-        onEnter();
-      } else if (e.code === 'Backspace') {
-        onDelete();
-      } else {
-        const key = e.key.toUpperCase();
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
-          // onChar(key);
-        }
-      }
-    };
-    window.addEventListener('keyup', listener);
-    return () => {
-      window.removeEventListener('keyup', listener);
-    };
-  }, [onEnter, onDelete]);
+  const onCharacter = (value) => {
+    if (currentGuess.length < 5 && guesses.length < 6) {
+      setCurrentGuess(`${currentGuess}${value}`);
+    }
+  };
 
   return (
     <>
@@ -107,9 +120,15 @@ function MyWordle() {
           </div>
         ) : (
           <div>
-            <Keyboard onClick={onClick} onDelete={onDelete} /> q
+            <Keyboard
+              onClick={onClick}
+              onEnter={onEnter}
+              onDelete={onDelete}
+              onCharacter={onCharacter}
+            />
           </div>
         )}
+        {!isAWord && <div className='not-in-word-list'>Word not found</div>}
       </div>
     </>
   );

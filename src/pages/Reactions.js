@@ -1,8 +1,8 @@
 import React from 'react';
 import useFetch from '../services/useFetch';
-import Panel from './Panel';
-import Spinner from './Spinner';
-import PageNotFound from './PageNotFound';
+import Panel from '../components/Panel';
+import Spinner from '../components/Spinner';
+import PageNotFound from '../components/PageNotFound';
 import { arrayToMatrix } from '../utils';
 
 function Reactions() {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Spinner from './Spinner';
+import Spinner from '../components/Spinner';
 
 export default function Product() {
   const [loading, setLoading] = useState(true);

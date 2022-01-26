@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Projects from './components/Projects';
+import Projects from './pages/Projects';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import GitHubRepos from './components/GitHubRepos';
-import Reactions from './components/Reactions';
+import Home from './pages/Home';
+import GitHubRepos from './pages/GitHubRepos';
+import Reactions from './pages/Reactions';
 import MyWordle from './components/Reactions/MyWordle/MyWordle';
 
 export default function App() {

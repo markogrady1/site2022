@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
 
-export const Keyboard = (props) => {
+export const Keyboard = ({ onEnter, onDelete, onClick, onCharacter }) => {
   useEffect(() => {
     const listener = (e) => {
       if (e.code === 'Enter') {
-        props.onEnter();
+        onEnter();
       } else if (e.code === 'Backspace') {
-        props.onDelete();
-      } else if (e.code === 'MetaRight') {
-        props.onDelete();
+        onDelete();
       } else {
         const key = e.key.toUpperCase();
         if (key.length === 1 && key >= 'A' && key <= 'Z') {
-          props.onCharacter(key);
+          onCharacter(key);
         }
       }
     };
@@ -20,7 +18,7 @@ export const Keyboard = (props) => {
     return () => {
       window.removeEventListener('keyup', listener);
     };
-  }, [props.onEnter, props.onDelete, props.onCharacter]);
+  }, [onEnter, onDelete, onCharacter]);
 
   const classes = 'key';
   return (
@@ -30,7 +28,7 @@ export const Keyboard = (props) => {
           value='Q'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           Q
         </div>
@@ -38,7 +36,7 @@ export const Keyboard = (props) => {
           value='W'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           W
         </div>
@@ -46,7 +44,7 @@ export const Keyboard = (props) => {
           value='E'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           E
         </div>
@@ -54,7 +52,7 @@ export const Keyboard = (props) => {
           value='R'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           R
         </div>
@@ -62,7 +60,7 @@ export const Keyboard = (props) => {
           value='T'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           T
         </div>
@@ -70,7 +68,7 @@ export const Keyboard = (props) => {
           value='Y'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           Y
         </div>
@@ -78,7 +76,7 @@ export const Keyboard = (props) => {
           value='U'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           U
         </div>
@@ -86,7 +84,7 @@ export const Keyboard = (props) => {
           value='I'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           I
         </div>
@@ -94,7 +92,7 @@ export const Keyboard = (props) => {
           value='O'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           O
         </div>
@@ -102,7 +100,7 @@ export const Keyboard = (props) => {
           value='P'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           P
         </div>
@@ -112,7 +110,7 @@ export const Keyboard = (props) => {
           value='A'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           A
         </div>
@@ -120,7 +118,7 @@ export const Keyboard = (props) => {
           value='S'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           S
         </div>
@@ -128,7 +126,7 @@ export const Keyboard = (props) => {
           value='D'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           D
         </div>
@@ -136,7 +134,7 @@ export const Keyboard = (props) => {
           value='F'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           F
         </div>
@@ -144,7 +142,7 @@ export const Keyboard = (props) => {
           value='G'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           G
         </div>
@@ -152,7 +150,7 @@ export const Keyboard = (props) => {
           value='H'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           H
         </div>
@@ -160,7 +158,7 @@ export const Keyboard = (props) => {
           value='J'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           J
         </div>
@@ -168,7 +166,7 @@ export const Keyboard = (props) => {
           value='K'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           K
         </div>
@@ -176,7 +174,7 @@ export const Keyboard = (props) => {
           value='L'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           L
         </div>
@@ -186,7 +184,7 @@ export const Keyboard = (props) => {
           value='ENTER'
           style={{ width: `100px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           ENTER
         </div>
@@ -194,7 +192,7 @@ export const Keyboard = (props) => {
           value='Z'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           Z
         </div>
@@ -202,7 +200,7 @@ export const Keyboard = (props) => {
           value='X'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           X
         </div>
@@ -210,7 +208,7 @@ export const Keyboard = (props) => {
           value='C'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           C
         </div>
@@ -218,7 +216,7 @@ export const Keyboard = (props) => {
           value='V'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           V
         </div>
@@ -226,7 +224,7 @@ export const Keyboard = (props) => {
           value='B'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           B
         </div>
@@ -234,7 +232,7 @@ export const Keyboard = (props) => {
           value='N'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           N
         </div>
@@ -242,7 +240,7 @@ export const Keyboard = (props) => {
           value='M'
           style={{ width: `40px`, height: '58px' }}
           className={classes}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           M
         </div>
@@ -250,7 +248,7 @@ export const Keyboard = (props) => {
           value='DELETE'
           style={{ width: `100px`, height: '58px' }}
           className={classes}
-          onClick={props.onDelete}
+          onClick={onDelete}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

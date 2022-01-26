@@ -12,6 +12,8 @@ function MyWordle() {
   const [gameId, setGameId] = useState(0);
   const [isAWord, setIsAWord] = useState(true);
   const [solution, setSolution] = useState(() => {
+    const storedSolution = JSON.parse(localStorage.getItem('solution'));
+    if (storedSolution !== null) return storedSolution;
     const currentwor = words[Math.floor(Math.random() * words.length)] || '';
     return currentwor.toUpperCase();
   });
@@ -26,10 +28,21 @@ function MyWordle() {
       return [];
     }
   });
+  const [gameRefresh, setGameRefresh] = useState((val) => {
+    if ((guesses.length === 6 && !isGameOver) || val) {
+      refreshAll();
+    }
+    return false;
+  });
 
   useEffect(() => {
+    console.log('THE SOLUTION IS: ', solution);
+    localStorage.setItem('solution', JSON.stringify(solution));
     localStorage.setItem('guesses', JSON.stringify(guesses));
-  }, [guesses]);
+    if (gameRefresh) {
+      refreshAll();
+    }
+  }, [guesses, solution]);
 
   const onClick = (e) => {
     if (e.currentTarget.textContent === 'DELETE') {
@@ -48,6 +61,10 @@ function MyWordle() {
   };
 
   const startNewGame = () => {
+    refreshAll();
+  };
+
+  function refreshAll() {
     setGameId(gameId + 1);
     setIsGameOver(false);
     setGuesses([]);
@@ -56,7 +73,7 @@ function MyWordle() {
       const currentwor = words[Math.floor(Math.random() * words.length)] || '';
       return currentwor.toUpperCase();
     });
-  };
+  }
 
   const onEnter = () => {
     const isWord = words.find((item) => item.toUpperCase() === currentGuess);
@@ -106,7 +123,11 @@ function MyWordle() {
       <div className='keyboard-container'>
         {isGameOver ? (
           <div>
-            <PlayAgain onClick={() => startNewGame()} gameStatus={outcome} />
+            <PlayAgain
+              solution={solution}
+              onClick={() => startNewGame()}
+              gameStatus={outcome}
+            />
           </div>
         ) : (
           <div>

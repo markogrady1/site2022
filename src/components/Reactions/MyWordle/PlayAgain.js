@@ -6,9 +6,18 @@ const PlayAgain = (props) => (
       className='game-over-message'
       style={{ color: props.gameStatus === 'lost' ? 'red' : 'green' }}
     >
-      {props.gameStatus === 'lost'
-        ? 'Game Over. Better luck next time'
-        : 'You Won'}
+      {props.gameStatus === 'lost' ? (
+        <>
+          <p>Game Over. Better luck next time. </p>
+          <p style={{ color: 'black' }}>
+            {' '}
+            The word was &nbsp;
+            {props.solution}
+          </p>
+        </>
+      ) : (
+        'You Won'
+      )}
     </div>
     <button className='play-again-bttn' onClick={props.onClick}>
       Play Again

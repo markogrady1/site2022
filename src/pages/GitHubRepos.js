@@ -1,7 +1,7 @@
 import React from 'react';
 import useFetch from '../services/useFetch';
-import Spinner from './Spinner';
-import PageNotFound from './PageNotFound';
+import Spinner from '../components/Spinner';
+import PageNotFound from '../components/PageNotFound';
 
 function GitHubRepos() {
   const {

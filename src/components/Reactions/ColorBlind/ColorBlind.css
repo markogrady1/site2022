@@ -2,12 +2,13 @@
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  background-color: red;
 }
 
-.color-blind-container {
+.color-blind {
   display: flex;
-  flex-wrap: nowrap;
-  margin: auto 0px;
-  width: 100%;
+}
+
+div.color-blind-container {
+  width: 30%;
+  margin: 30px auto;
 }

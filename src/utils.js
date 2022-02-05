@@ -33,6 +33,15 @@ const range = (min, max) =>
 // pick a random number between min and max (edges included)
 const random = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
 
+const randomArrayToMatrix = () => {
+  const matrixAttr = Math.random() < 0.5 ? [4, 2] : [9, 3];
+
+  return arrayToMatrix(
+    Array.from({ length: matrixAttr[0] - 1 + 1 }, (_, i) => 1 + i),
+    matrixAttr[1]
+  );
+};
+
 // Given an array of numbers and a max...
 // Pick a random sum (< max) from the set of all available sums in arr
 const randomSumIn = (arr, max) => {
@@ -59,4 +68,5 @@ export {
   sum,
   range,
   random,
+  randomArrayToMatrix,
 };

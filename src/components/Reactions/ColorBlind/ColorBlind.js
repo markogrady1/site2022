@@ -1,41 +1,68 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { randomArrayToMatrix, random } from '../../../utils';
+import React, { useState } from 'react';
+import { arrayToMatrix, random } from '../../../utils';
 
 import Circle from './Circle';
 import './ColorBlind.css';
 
 function ColorBlind() {
-  const [circleArr, setCircleArr] = useState(randomArrayToMatrix());
+  const [circleArr, setCircleArr] = useState(() => {
+    return arrayToMatrix(
+      Array.from({ length: 9 - 1 + 1 }, (_, i) => 1 + i),
+      3
+    );
+  });
 
   const [color, setColor] = useState(() => {
     return Math.floor(Math.random() * 16777215).toString(16);
   });
-  const [randomRow, setRandomRow] = useState(() => random(1, circleArr.length));
-  const [randomCol, setRandomCol] = useState(() => random(1, circleArr.length));
+  const [randomPos, setRandomPos] = useState(() => {
+    return {
+      row: random(1, circleArr.length),
+      col: random(1, circleArr.length),
+    };
+  });
 
-  useEffect(() => {
-    setCircleArr(randomArrayToMatrix());
-  }, []);
+  const [filter, setFilter] = useState(85);
+  const [score, setScore] = useState(0);
+  const [newGame, setNewGame] = useState(false);
+  const [maxScore, setMaxScore] = useState(0);
+
   const onClick = (e) => {
     if (e.target.style.filter) {
-      setCircleArr(randomArrayToMatrix());
+      if (newGame) setNewGame(false);
 
-      console.log('circleArr', circleArr.length);
+      setScore(score + 1);
+      setFilter(() => {
+        if (filter === 100) return 100;
+        return filter + 1;
+      });
+      setCircleArr(() => {
+        return arrayToMatrix(
+          Array.from({ length: 9 - 1 + 1 }, (_, i) => 1 + i),
+          3
+        );
+      });
+
       setColor(Math.floor(Math.random() * 16777215).toString(16));
-      setRandomRow(random(1, circleArr.length));
-      setRandomCol(random(1, circleArr.length));
 
-      console.log('you selected correctly', e.target.style.filter);
+      setRandomPos(() => {
+        return {
+          col: random(1, circleArr.length),
+          row: random(1, circleArr.length),
+        };
+      });
+    } else {
+      if (score >= 0 && filter >= 85) {
+        setNewGame(true);
+      }
+      setMaxScore(score);
+      setScore(0);
+      setFilter(85);
     }
   };
 
   const randomiseCircle = (row, col) => {
-    console.log(row, col);
-    console.log('randomRow', randomRow, 'randomCol', randomCol);
-    console.log('circleArr.length', circleArr.length);
-
-    return ++col === randomCol && ++row === randomRow ? true : false;
+    return ++col === randomPos.col && ++row === randomPos.row ? true : false;
   };
 
   return (
@@ -48,7 +75,11 @@ function ColorBlind() {
                 return (
                   <Circle
                     key={col}
-                    filter={randomiseCircle(row, col) ? 'brightness(85%)' : ''}
+                    filter={
+                      randomiseCircle(row, col)
+                        ? 'brightness(' + filter + '%)'
+                        : ''
+                    }
                     backgroundColor={`#${color}`}
                     onClick={onClick}
                   />
@@ -57,6 +88,10 @@ function ColorBlind() {
             </div>
           );
         })}
+      </div>
+      <div className='score'>{score}</div>
+      <div className='score'>
+        {newGame ? 'Better luck next time. You scored: ' + maxScore : ''}
       </div>
     </div>
   );

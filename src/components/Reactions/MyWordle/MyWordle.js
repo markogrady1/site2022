@@ -28,21 +28,18 @@ function MyWordle() {
       return [];
     }
   });
-  const [gameRefresh, setGameRefresh] = useState((val) => {
-    if ((guesses.length === 6 && !isGameOver) || val) {
-      refreshAll();
-    }
-    return false;
-  });
 
-  useEffect(() => {
-    console.log('THE SOLUTION IS: ', solution);
-    localStorage.setItem('solution', JSON.stringify(solution));
-    localStorage.setItem('guesses', JSON.stringify(guesses));
-    if (gameRefresh) {
-      refreshAll();
-    }
-  }, [guesses, solution]);
+  useEffect(
+    (isGameOver, refreshAll) => {
+      console.log('THE SOLUTION IS: ', solution);
+      localStorage.setItem('solution', JSON.stringify(solution));
+      localStorage.setItem('guesses', JSON.stringify(guesses));
+      if (guesses.length === 6 && isGameOver) {
+        refreshAll();
+      }
+    },
+    [guesses, solution]
+  );
 
   const onClick = (e) => {
     if (e.currentTarget.textContent === 'DELETE') {

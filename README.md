@@ -14,5 +14,19 @@ run tests
 
 using docker
 
-- 🐳 `docker build . -t sometag`
-- 🏃 `docker run -it --rm -p 3000:3000 -e CHOCKIDAR_USEPOLLING=true sometag`
+- 🐳  building
+
+```
+docker build . -t some-tag
+```
+
+- 🏃 running
+
+```
+docker run -it --rm \
+  -v ${PWD}:/src/app \
+  -v /src/app/node_modules \
+  -p 3000:3000 \
+  -e CHOKIDAR_USEPOLLING=true \
+  some-tag
+```
